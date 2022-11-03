@@ -1,0 +1,10 @@
+<ng-container *ngIf="values && values.length>0">
+  <p>Le montant désiré n'est pas possible pour le moment,
+    nous vous proposons des montants qui s'en rapporoche : </p>
+
+  <!--- la selection des valeurs. -->
+  <button *ngFor="let value of values" name="value-{{value}}" id="value-{{value}}"
+          type="button" (click)="selectValue(value)"> {{value}} €
+  </button>
+  <br>
+</ng-container>

@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-result-cards',
   templateUrl: './result-cards.component.html',
   styleUrls: ['./result-cards.component.scss']
 })
-export class ResultCardsComponent implements OnInit {
+export class ResultCardsComponent  {
 
-  constructor() { }
+ @Input() values: number[] | undefined;
 
-  ngOnInit(): void {
-  }
 
 }

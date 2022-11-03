@@ -1,1 +1,12 @@
 <p>Votre montant est composé des cartes suivantes :</p>
+
+
+<ng-container *ngIf="!values || values.length===0 else empty">
+  <strong> Aucun résultat n'est disponible pour le montant saisi. </strong>
+</ng-container>
+
+<ng-template #empty>
+  <ng-container *ngFor="let value of values">
+    <span> - {{value}} € </span><br>
+  </ng-container>
+</ng-template>

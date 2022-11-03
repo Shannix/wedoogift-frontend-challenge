@@ -1,5 +1,9 @@
 <!-- Saisir le montant souhaité -->
 <app-input-amount (searchCards)="searchCombination($event)"></app-input-amount>
 
+<!--- choisir un montant parmis les choix possibles -->
+<app-choose-amount *ngIf="!isLoaded" [values]="possibleValues"
+                   (selectedValue)="updateInputValueWithChoosenValue($event)"></app-choose-amount>
+
 <!-- Afficher les resultats retournés par le serveur lors d'une recherche -->
-<app-result-cards></app-result-cards>
+<app-result-cards *ngIf="isLoaded" [values]="searchResult"></app-result-cards>
