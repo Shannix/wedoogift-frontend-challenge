@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ResultCardsComponent } from './result-cards.component';
+import {ResultCardsComponent} from './result-cards.component';
 
 describe('ResultCardsComponent', () => {
   let component: ResultCardsComponent;
@@ -8,9 +8,9 @@ describe('ResultCardsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResultCardsComponent ]
+      declarations: [ResultCardsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +22,12 @@ describe('ResultCardsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+
+  it('should show values 5 euros and 7 euros ', () => {
+    component.values = [5, 7];
+    expect(component.values.length).toEqual(2);
+  });
+
+
+})
+;

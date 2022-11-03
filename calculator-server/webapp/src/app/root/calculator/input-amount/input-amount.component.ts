@@ -65,9 +65,11 @@ export class InputAmountComponent implements OnInit {
    * Renvoi la valeur saisie de l'utilisateur au composant responsable de la recherche.
    * */
   searchCombination(): void {
+    const amountValue = this.form?.get('amount');
     if (this.form.valid) {
-      this.searchCards.emit(this.form?.get('amount')?.value);
+      this.searchCards.emit(amountValue?.value);
     } else {
+      amountValue?.setValue(amountValue?.value.replace(/\D/g, ''));
       alert("Merci de saisir un montant positif valide ");
     }
   }

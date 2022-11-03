@@ -45,6 +45,10 @@ export class InputAmountFormControlComponent implements OnInit, ControlValueAcce
   /** Déclenche un événement de recherche. */
   @Output() searchCards = new EventEmitter<number>();
 
+  touched = false;
+
+  disabled = false;
+
   constructor(private formBuilder: FormBuilder, private calculatorService: CalculatorService) {
   }
 
@@ -123,4 +127,7 @@ export class InputAmountFormControlComponent implements OnInit, ControlValueAcce
     return this.form.valid ? null : {invalidForm: true};
   }
 
+  setDisabledState(disabled: boolean) {
+    this.disabled = disabled;
+  }
 }

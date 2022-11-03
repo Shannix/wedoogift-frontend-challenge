@@ -9,8 +9,10 @@ import {CalculatorComponent} from './root/calculator/calculator.component';
 import {InputAmountComponent} from './root/calculator/input-amount/input-amount.component';
 import {ResultCardsComponent} from './root/calculator/result-cards/result-cards.component';
 import {Interceptor} from "./interceptor/interceptor.service";
-import { ChooseAmountComponent } from './root/calculator/choose-amount/choose-amount.component';
-import { InputAmountFormControlComponent } from './root/calculator/input-amount-form-control/input-amount-form-control.component';
+import {ChooseAmountComponent} from './root/calculator/choose-amount/choose-amount.component';
+import {
+  InputAmountFormControlComponent
+} from './root/calculator/input-amount-form-control/input-amount-form-control.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { InputAmountFormControlComponent } from './root/calculator/input-amount-
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

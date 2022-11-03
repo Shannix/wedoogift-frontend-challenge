@@ -50,7 +50,14 @@ export class CalculatorComponent {
     } else if (!value.equal) {
       /* L'utilisateur doit faire un choix entre le plus grand ou le plus petit */
       this.isLoaded = false;
-      this.possibleValues = [value.floor.value, value.ceil.value];
+      const result = [];
+      if (value.ceil) {
+        result.push(value.ceil.value);
+      }
+      if (value.floor) {
+        result.push(value.floor.value);
+      }
+      this.possibleValues = result;
       return [];
     }
     /* le total des cards proposé est équivalent  */
