@@ -1,4 +1,29 @@
-import {AbstractControl, ValidatorFn} from "@angular/forms";
+import {AbstractControl, FormArray, FormGroup, ValidatorFn} from "@angular/forms";
+
+export function validateFormControls(
+  control: AbstractControl,
+  opts?: {
+    onlySelf?: boolean;
+    emitEvent?: boolean;
+  }
+): void {
+  if (!opts) {
+    opts = {onlySelf: true, emitEvent: false};
+  }
+  control.markAsTouched(opts);
+
+  if (control instanceof FormGroup || control instanceof FormArray) {
+    Object.keys(control.controls).forEach(field => {
+      const fieldControl: AbstractControl | null = control.get(field);
+      if (fieldControl != null) {
+        validateFormControls(fieldControl, opts);
+      }
+    });
+  } else {
+    control.updateValueAndValidity(opts);
+  }
+  return;
+}
 
 export default class ValidatorUtils {
   /**

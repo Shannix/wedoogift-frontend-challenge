@@ -20,6 +20,11 @@ export class InputAmountComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initForm();
+  }
+
+  /** Initialiser le formulaire. */
+  initForm(): void {
     this.form = this.formBuilder.group({
       amount: [undefined, [Validators.required]]
     }, {validators: ValidatorUtils.numberValidator('amount')});
