@@ -1,0 +1,21 @@
+<form [formGroup]="form">
+  <!-- Saisir le montant souhaité -->
+  <app-input-amount-form-control [formControl]="amountInputForm"></app-input-amount-form-control>
+
+  <div class="fr-col-12 text-right">
+    <!--(click)="searchCombination()"-->
+    <button id="button-valider" type="submit"
+            (click)="searchCombination()"
+            name="button-valider" title="Valider"
+            [disabled]="!form.get('amountInput')?.value"> VALIDER
+    </button>
+  </div>
+</form>
+
+
+<!--- choisir un montant parmis les choix possibles -->
+<app-choose-amount *ngIf="!isLoaded" [values]="possibleValues"
+                   (selectedValue)="updateInputValueWithChoosenValue($event)"></app-choose-amount>
+
+<!-- Afficher les resultats retournés par le serveur lors d'une recherche -->
+<app-result-cards *ngIf="isLoaded" [values]="searchResult"></app-result-cards>

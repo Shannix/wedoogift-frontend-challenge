@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, OnInit, Output} from '@angular/core';
+import {Component, forwardRef, OnInit} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -40,10 +40,7 @@ export class InputAmountFormControlComponent implements OnInit, ControlValueAcce
 
   /** Formulaire. */
   form: FormGroup;
-  amount: FormControl;
-
-  /** Déclenche un événement de recherche. */
-  @Output() searchCards = new EventEmitter<number>();
+  amountInput: FormControl;
 
   touched = false;
 
@@ -58,9 +55,9 @@ export class InputAmountFormControlComponent implements OnInit, ControlValueAcce
 
   /** Initialiser le formulaire. */
   initForm(): void {
-    this.amount = this.formBuilder.control(undefined, [Validators.required, ValidatorUtils.numberValidator('amount')]);
+    this.amountInput = this.formBuilder.control(undefined, [Validators.required, ValidatorUtils.numberValidator('amount')]);
     this.form = new FormGroup({
-      amount: this.amount
+      amountInput: this.amountInput
     });
     /* Observable sensible aux changement de valeurs. */
     this.calculatorService.correctDesiredAmount.subscribe(value => {
@@ -72,7 +69,7 @@ export class InputAmountFormControlComponent implements OnInit, ControlValueAcce
    * Augmente ou diminue le montant saisie par l'utilisateur.
    * */
   nextPreviousValue(isNext?: boolean): void {
-    let currentValue = this.amount?.value;
+    let currentValue = this.amountInput?.value;
     if (!currentValue) {
       currentValue = 0;
     }
@@ -90,19 +87,8 @@ export class InputAmountFormControlComponent implements OnInit, ControlValueAcce
    * Setter amount et lance la recherche.
    * */
   setAmountAndSearch(value: number): void {
-    this.amount?.setValue(value);
-    this.searchCombination();
-  }
-
-  /**
-   * Renvoi la valeur saisie de l'utilisateur au composant responsable de la recherche.
-   * */
-  searchCombination(): void {
-    if (this.form.valid) {
-      this.searchCards.emit(this.form?.get('amount')?.value);
-    } else {
-      alert("Merci de saisir un montant positif valide ");
-    }
+    this.amountInput?.setValue(value);
+    //this.searchCombination();
   }
 
 
@@ -123,6 +109,9 @@ export class InputAmountFormControlComponent implements OnInit, ControlValueAcce
   validate(c: AbstractControl): ValidationErrors | null {
     if (c.touched) {
       validateFormControls(this.form);
+    }
+    if (!this.form.valid) {
+      alert("Merci de saisir un montant positif valide ");
     }
     return this.form.valid ? null : {invalidForm: true};
   }

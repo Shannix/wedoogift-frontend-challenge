@@ -12,7 +12,8 @@ import {Interceptor} from "./interceptor/interceptor.service";
 import {ChooseAmountComponent} from './root/calculator/choose-amount/choose-amount.component';
 import {
   InputAmountFormControlComponent
-} from './root/calculator/input-amount-form-control/input-amount-form-control.component';
+} from './root/calculator-reactive-form/input-amount-form-control/input-amount-form-control.component';
+import {CalculatorReactiveFormComponent} from './root/calculator-reactive-form/calculator-reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {
     InputAmountComponent,
     ResultCardsComponent,
     ChooseAmountComponent,
-    InputAmountFormControlComponent
+    InputAmountFormControlComponent,
+    CalculatorReactiveFormComponent
   ],
   imports: [
     BrowserModule,

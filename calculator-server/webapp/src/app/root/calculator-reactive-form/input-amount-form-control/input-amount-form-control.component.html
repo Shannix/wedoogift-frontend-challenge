@@ -1,11 +1,6 @@
 <div>
   <label for="amount">Montant désiré : </label><br>
   <button title="Diminuer le montant" (click)="nextPreviousValue()" name="minus" id="minus">−</button>
-  <input autofocus id="amount" type="text" [formControl]="amount">
+  <input autofocus id="amount" type="text" [formControl]="amountInput">
   <button title="Augmenter le montant" (click)="nextPreviousValue(true)" name="plus" id="plus">+</button>
-  <br><br>
-  <button id="button-valider" type="submit" (click)="searchCombination()"
-          name="button-valider" title="Valider"
-          [disabled]="!form.get('amount')?.value"> VALIDER
-  </button>
 </div>

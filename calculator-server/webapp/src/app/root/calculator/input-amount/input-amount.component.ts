@@ -12,9 +12,14 @@ export class InputAmountComponent implements OnInit {
 
   /** Formulaire. */
   form: FormGroup;
-
   /** Déclenche un événement de recherche. */
   @Output() searchCards = new EventEmitter<number>();
+
+  /*  subscription: Subscription;
+   const event = interval(5);
+   this.subscription?.unsubscribe();
+   this.subscription = event.subscribe(val => console.log(val));*/
+
 
   constructor(private formBuilder: FormBuilder, private calculatorService: CalculatorService) {
   }
