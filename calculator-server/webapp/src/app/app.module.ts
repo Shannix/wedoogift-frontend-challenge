@@ -14,6 +14,7 @@ import {
   InputAmountFormControlComponent
 } from './root/calculator-reactive-form/input-amount-form-control/input-amount-form-control.component';
 import {CalculatorReactiveFormComponent} from './root/calculator-reactive-form/calculator-reactive-form.component';
+import { TradeInterfaceComponent } from './root/trade-interface/trade-interface.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {CalculatorReactiveFormComponent} from './root/calculator-reactive-form/c
     ResultCardsComponent,
     ChooseAmountComponent,
     InputAmountFormControlComponent,
-    CalculatorReactiveFormComponent
+    CalculatorReactiveFormComponent,
+    TradeInterfaceComponent
   ],
   imports: [
     BrowserModule,

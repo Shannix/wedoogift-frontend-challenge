@@ -10,9 +10,9 @@ export class Interceptor implements HttpInterceptor {
    * */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const cloneRequest = request.clone({
-      headers: request.headers.set("Authorization", "tokenTest123"),
-    });
+    const cloneRequest = request.clone({});
+    /*  headers: request.headers.set("Authorization", "tokenTest123")
+        .set('Access-Control-Allow-Origin', 'http://localhost:4300'),*/
 
     return next.handle(cloneRequest);
   }

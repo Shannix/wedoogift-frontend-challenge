@@ -40,4 +40,8 @@ export default class ValidatorUtils {
       return null;
     };
   }
+
+  static isNumberValidator(value: any): number {
+    return Number.isNaN(Number(value)) ? 0 : Number(value);
+  }
 }
