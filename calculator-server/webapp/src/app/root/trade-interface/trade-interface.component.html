@@ -1,0 +1,35 @@
+<div>
+  Interval <input #interval type="number" [(ngModel)]="intervalCall"/>
+</div>
+
+<div>
+  PLUS OU MOINS VALUES : {{getTotalPlusMoinsValues() | currency:'EUR':true: '1.3-3'}} (c) EUR
+</div>
+
+
+<ng-container *ngFor="let action of trades">
+  <ng-container
+    *ngTemplateOutlet="trade; context: { target: action   }"></ng-container>
+</ng-container>
+
+
+<div>
+  <button type="button" name="button" (click)="enregistrerCurrentTrade()"> Enregistrer</button>
+</div>
+
+
+<ng-template #trade let-target="target">
+  <div>
+    {{target.dateUpdate | date :'HH:mm:ss' }}
+    Cours
+    <div [innerHTML]="target.instrumentName"></div>
+    <h3>{{target.instrumentPrice | currency:'EUR':true: '1.3-3'}} (c) EUR </h3>
+  </div>
+
+  QTE <input #qte [(ngModel)]="target.qtePossession" type="text"/>
+  VAL <input #val [(ngModel)]="target.prixPru" type="text"/>
+  {{number(qte.value) * (target.instrumentPrice - number(val.value)) | currency:'EUR':true: '1.3-3'}} (c) EUR
+
+
+  <hr>
+</ng-template>
